@@ -2,16 +2,64 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// TODO: Create an array of questions for user input
+const generateReadMe = (response) =>
+`
+# ${response.title}
+    
+## Description
 
-// process.argv[2]
+${response.description}
+    
+## Table of Contents
+1. [Install Instructions](#install-instructions)
+2. [Usage Instructions](#usage-instructions)
+3. [License](#license)
+4. [Contributions](#contributions)
+5. [Test Instructions](#test-instructions)
+6. [Questions](#questions)
 
-// module.exports = {
-//     pie,
-//     predictable,
-//   };
+## Install Instructions
 
-inquirer.prompt([
+${response.installInstructions}
+
+Initilize npm by using the following command:
+
+    npm init
+
+Install dependencies using the following command:
+
+    npm i
+
+## Usage Instructions
+
+${response.usage}
+
+The application is invoked by using the following command:
+
+    node index.js
+
+## License
+
+${response.license}
+
+## Contributions
+
+${response.contributions}
+
+## Test Instructions
+
+${response.testInstructions}
+
+## Questions
+
+If you have any questions, you can reach the author at:
+
+**GitHub** (https://github.com/${response.gitHubUser})
+
+**Email** ${response.email}
+`;
+
+  inquirer.prompt([
     {
         type: 'input',
         name: 'title',
@@ -33,6 +81,12 @@ inquirer.prompt([
         message: 'How do you use the application?',
     },
     {
+        type: 'list',
+        name: 'license',
+        message: 'Which license will you use?',
+        choices: ['Lic1', 'Lic2', 'Lic3', 'Lic4', 'Lic5']
+    },
+    {
         type: 'input',
         name: 'contributions',
         message: 'What are the contribution guidelines?',
@@ -42,20 +96,36 @@ inquirer.prompt([
         name: 'testInstructions',
         message: 'What are the test instructions?',
     },
+    {
+        type: 'input',
+        name: 'gitHubUser',
+        message: 'What is your GitHub username?',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email address?',
+    },
 ]).then((response) => {
-    
-    let responseBody = `Title: ${response.title} \n`;
-    responseBody += `Description: ${response.description} \n`;
-    responseBody += `Install Instructions: ${response.installInstructions} \n`;
-    responseBody += `Usage: ${response.usage} \n`;
-    responseBody += `Contributions: ${response.contributions} \n`;
-    responseBody += `Test Instructions: ${response.testInstructions} \n`;
+    const readmePageContent = generateReadMe(response);
 
-    fs.writeFile('readme.txt', responseBody, (err) =>
+    fs.writeFile('README.md', readmePageContent, (err) =>
         err ? console.log(err) : console.log("Write successful")
     )
 
 });
+
+
+
+// TODO: Create an array of questions for user input
+
+// process.argv[2]
+
+// module.exports = {
+//     pie,
+//     predictable,
+//   };
+
 
 
 // TODO: Create a function to write README file
