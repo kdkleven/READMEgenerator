@@ -1,0 +1,22 @@
+{
+  "name": "develop",
+  "version": "1.0.0",
+  "description": "Package.json intended for use with index.js in the READMEgenerator project\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdkleven/READMEgenerator.git"
+  },
+  "author": "kdkleven",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kdkleven/READMEgenerator/issues"
+  },
+  "homepage": "https://github.com/kdkleven/READMEgenerator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
