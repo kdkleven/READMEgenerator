@@ -1,8 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const retLicense = require('./utils/generateMarkdown.js');
+//const retLicense = require('./utils/generateMarkdown.js');
 const fs = require('fs');
-const license = "";
+//const license = "";
 
 // TODO: Create an array of questions for user input
 const generateReadMe = (response) =>
@@ -43,7 +43,7 @@ The application is invoked by using the following command:
 
 ## License
 
-// ${generateMarkdown}
+
 
 ## Contributions
 
@@ -57,7 +57,7 @@ ${response.testInstructions}
 
 If you have any questions, you can reach the author at:
 
-**GitHub** (https://github.com/${response.gitHubUser})
+**GitHub** https://github.com/${response.gitHubUser}
 
 **Email** ${response.email}
 `;
@@ -111,14 +111,14 @@ If you have any questions, you can reach the author at:
     },
 ]).then((response) => {
     const readmePageContent = generateReadMe(response);
-    license = response.license;
+   // license = response.license;
     
     writeToFile(readmePageContent);
 });
 
-module.exports = function(license) {
-    license;
-}
+// module.exports = function(license) {
+//     license;
+// }
 
 // TODO: Create a function to write README file
 function writeToFile(content) {
