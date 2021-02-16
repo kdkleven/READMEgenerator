@@ -1,7 +1,10 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
+const retLicense = require('./utils/generateMarkdown.js');
 const fs = require('fs');
+const license = "";
 
+// TODO: Create an array of questions for user input
 const generateReadMe = (response) =>
 `
 # ${response.title}
@@ -40,7 +43,7 @@ The application is invoked by using the following command:
 
 ## License
 
-${response.license}
+// ${generateMarkdown}
 
 ## Contributions
 
@@ -108,35 +111,27 @@ If you have any questions, you can reach the author at:
     },
 ]).then((response) => {
     const readmePageContent = generateReadMe(response);
-
-    fs.writeFile('README.md', readmePageContent, (err) =>
-        err ? console.log(err) : console.log("Write successful")
-    )
-
+    license = response.license;
+    
+    writeToFile(readmePageContent);
 });
 
-
-
-// TODO: Create an array of questions for user input
-
-// process.argv[2]
-
-// module.exports = {
-//     pie,
-//     predictable,
-//   };
-
-
+module.exports = function(license) {
+    license;
+}
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    // fs.writeFile('README.txt', VARIBLE, (err) =>
-    // err ? console.error(err) : console.log('Write Successful')
-    // );
+function writeToFile(content) {
+    fs.writeFile('README.md', content, (err) =>
+        err ? console.log(err) : console.log("Write successful")
+    )
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    // ???
+}
 
 // Function call to initialize app
 init();
+
