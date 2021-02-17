@@ -1,11 +1,10 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-//const retLicense = require('./utils/generateMarkdown.js');
+const license = require('./utils/generateMarkdown.js');
 const fs = require('fs');
-//const license = "";
 
 // TODO: Create an array of questions for user input
-const generateReadMe = (response) =>
+const GenerateReadMe = (response) =>
 `
 # ${response.title}
     
@@ -43,7 +42,7 @@ The application is invoked by using the following command:
 
 ## License
 
-
+${response.license}
 
 ## Contributions
 
@@ -87,7 +86,7 @@ If you have any questions, you can reach the author at:
         type: 'list',
         name: 'license',
         message: 'Which license will you use?',
-        choices: ['Lic1', 'Lic2', 'Lic3', 'Lic4', 'Lic5']
+        choices: ['Apache License 2.0', 'GNU General Public License v3.0', 'MIT License', 'BSD 2-Clause "Simplified" License', 'BSD 3-Clause "New" or "Revised" License', 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 1.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v3', 'Mozilla Public License 2.0', 'The Unlicense'],
     },
     {
         type: 'input',
@@ -110,15 +109,12 @@ If you have any questions, you can reach the author at:
         message: 'What is your email address?',
     },
 ]).then((response) => {
-    const readmePageContent = generateReadMe(response);
-   // license = response.license;
+    const readmePageContent = GenerateReadMe(response);
+
+    module.exports = GenerateReadMe();
     
     writeToFile(readmePageContent);
 });
-
-// module.exports = function(license) {
-//     license;
-// }
 
 // TODO: Create a function to write README file
 function writeToFile(content) {
