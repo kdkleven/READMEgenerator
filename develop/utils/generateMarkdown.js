@@ -1,12 +1,34 @@
 const license = require('../index.js');
 
-renderLicenseBadge(license);
-const selLicense = new license();
+//renderLicenseBadge(license);
+//const selLicense = new license();
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
 
-  
+let lic = [
+// let obj = {name: "a", age: "b", color: "c"};
+// let arrObj = [{name: "john"}];
+  {
+    "name": "Apache 2.0",
+    "link": "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+  },
+  {
+    "name": "Boost Software License 1.0",
+    "link": "[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)"
+  }
+];
+console.log("license" + license);
+console.log("array" + lic[0].name);
+// console.log("object" + obj.name);
+// console.log("objectarr" + arrObj[0].name);
+
+let activeLicense = lic.filter(name => {name.name === license); 
+    
+  console.log("activelicense"+ activeLicense);
+
+
+
 
 // Apache 2.0 = [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 // Boost Software License 1.0 = [![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
@@ -22,7 +44,6 @@ function renderLicenseBadge(license) {
 // GNU AGPL v3 = [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 // GNU LGPL v3 = [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
-
 }
 
 // TODO: Create a function that returns the license link
@@ -35,14 +56,66 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-
+  // ## License
+    
+  // This application is licensed under the ${response.license} license.
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
+function generateMarkdown(response) {
+  return `
+  # ${response.title}
 
+  ${renderLicenseBadge(response.license)}
+
+  ${response.description}
+      
+  ## Table of Contents
+  1. [Install Instructions](#install-instructions)
+  2. [Usage Instructions](#usage-instructions)
+  3. [License](#license)
+  4. [Contributions](#contributions)
+  5. [Test Instructions](#test-instructions)
+  6. [Questions](#questions)
+  
+  ## Install Instructions
+  
+  ${response.installInstructions}
+  
+  Initilize npm by using the following command:
+  
+      npm init
+  
+  Install dependencies using the following command:
+  
+      npm i
+  
+  ## Usage Instructions
+  
+  ${response.usage}
+  
+  The application is invoked by using the following command:
+  
+      node index.js
+  
+  <license section>
+  
+  ## Contributions
+  
+  ${response.contributions}
+  
+  ## Test Instructions
+  
+  ${response.testInstructions}
+  
+  ## Questions
+  
+  If you have any questions, you can reach the author at:
+  
+  **GitHub** https://github.com/${response.gitHubUser}
+  
+  **Email** ${response.email}
 `;
 }
 
-//module.exports = generateMarkdown;
+module.exports = generateMarkdown;
