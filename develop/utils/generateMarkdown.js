@@ -65,7 +65,7 @@ function renderLicenseBadge(license) {
   } else {
     const licenseBadge = licenseArr.filter(l => l.lic === license);
     return `
-  ${licenseBadge[0].badge}
+${licenseBadge[0].badge}
     `;
   }
 }
@@ -76,11 +76,9 @@ function renderLicenseSection(license) {
     return '';
   } else {
     return `
-
 ## License
   
 This application is licensed under ${license}.
-    
     `;
   }
 }
