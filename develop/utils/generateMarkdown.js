@@ -100,7 +100,7 @@ function generateMarkdown(response) {
   1. [Install Instructions](#install-instructions)
   2. [Usage Instructions](#usage-instructions)
   3. [License](#license)
-  4. [Contribution Guidelines](#contributions)
+  4. [Contribution Guidelines](#contribution-guidelines)
   5. [Test Instructions](#test-instructions)
   6. [Questions](#questions)
   

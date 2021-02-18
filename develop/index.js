@@ -42,7 +42,7 @@ function init() {
         },
         {
             type: 'input',
-            name: 'contributions',
+            name: 'contributionGuidelines',
             message: 'Contribution Guidelines:',
         },
         {
