@@ -1,5 +1,7 @@
+// Declare required package
 const license = require('../index.js');
 
+// Declare array of objects containing license names, badges, and links
 const licenseArr = [
   {
     lic: 'Apache License 2.0',
@@ -55,9 +57,9 @@ const licenseArr = [
   },
 ];
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Returns a license badge w/ link based on which license is passed in
 function renderLicenseBadge(license) {
+  // If there is no license, return an empty string
   if (!license) {
     return '';
   } else {
@@ -68,8 +70,7 @@ function renderLicenseBadge(license) {
   }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Returns the license section of README if a license is provided
 function renderLicenseSection(license) {
   if (!license) {
     return '';
@@ -84,7 +85,7 @@ function renderLicenseSection(license) {
   }
 }
 
-// TODO: Create a function to generate markdown for README
+// Generate markdown for README
 function generateMarkdown(response) {
   return `
   # ${response.title}
@@ -99,7 +100,7 @@ function generateMarkdown(response) {
   1. [Install Instructions](#install-instructions)
   2. [Usage Instructions](#usage-instructions)
   3. [License](#license)
-  4. [Contributions](#contributions)
+  4. [Contribution Guidelines](#contributions)
   5. [Test Instructions](#test-instructions)
   6. [Questions](#questions)
   
@@ -113,7 +114,7 @@ function generateMarkdown(response) {
   
 ${renderLicenseSection(response.license)} ${renderLicenseBadge(response.license)}
 
-  ## Contributions
+  ## Contribution Guidelines
   
   ${response.contributions}
   
@@ -123,8 +124,12 @@ ${renderLicenseSection(response.license)} ${renderLicenseBadge(response.license)
   
   ## Questions
   
-  If you have any questions, contact the author through GitHub [@${response.gitHubUser}](https://github.com/${response.gitHubUser}) or Email [${response.email}](mailto:${response.email})
+  If you have any questions, contact the author:  
+  
+  GitHub [@${response.gitHubUser}](https://github.com/${response.gitHubUser})  
+  Email [${response.email}](mailto:${response.email})
 `;
 }
 
+// export the generateMarkdown function for use elsewhere (index.js)
 module.exports = generateMarkdown;

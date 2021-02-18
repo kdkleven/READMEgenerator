@@ -1,18 +1,18 @@
-// TODO: Include packages needed for this application
+// Declare required package for the application to run
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 const fs = require('fs');
 
-// TODO: Create a function to write README file
+// Write README.md file
 function writeToFile(content) {
     fs.writeFile('README.md', content, (err) =>
         err ? console.log(err) : console.log("Your README.md has been generated successfully!")
     );
 }
 
-// TODO: Create a function to initialize app
+// Initialize the application
 function init() {
-    // call inquiry
+    // Prompt user for input response
     inquirer.prompt([
         {
             type: 'input',
@@ -38,7 +38,7 @@ function init() {
             type: 'list',
             name: 'license',
             message: 'License:',
-            choices: ['Apache License 2.0', 'GNU General Public License v3.0', 'MIT License', 'BSD 2-Clause "Simplified" License', 'BSD 3-Clause "New" or "Revised" License', 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 1.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v3', 'Mozilla Public License 2.0', 'The Unlicense',''],
+            choices: ['Apache License 2.0', 'GNU General Public License v3.0', 'MIT License', 'BSD 2-Clause "Simplified" License', 'BSD 3-Clause "New" or "Revised" License', 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 1.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v3', 'Mozilla Public License 2.0', 'The Unlicense', ''],
         },
         {
             type: 'input',
@@ -61,14 +61,13 @@ function init() {
             message: 'Email Address:',
         },
     ]).then((response) => {
+        // Assign variable to the user's response object
         const readmePageContent = generateMarkdown(response);
-    
-        //module.exports = GenerateReadMe();
-        
+        // Call function to write the README.md file
         writeToFile(readmePageContent);
     });
 }
 
-// Function call to initialize app
+// Call intializer function
 init();
 
