@@ -77,9 +77,9 @@ function renderLicenseSection(license) {
   } else {
     return `
 
-  ## License
+## License
   
-  This application is licensed under ${license}.
+This application is licensed under ${license}.
     
     `;
   }
@@ -88,46 +88,46 @@ function renderLicenseSection(license) {
 // Generate markdown for README
 function generateMarkdown(response) {
   return `
-  # ${response.title}
+# ${response.title}
 
-  ${renderLicenseBadge(response.license)}
+${renderLicenseBadge(response.license)}
 
-  ## Description
+## Description
 
-  ${response.description}
+${response.description}
       
-  ## Table of Contents
-  1. [Install Instructions](#install-instructions)
-  2. [Usage Instructions](#usage-instructions)
-  3. [License](#license)
-  4. [Contribution Guidelines](#contribution-guidelines)
-  5. [Test Instructions](#test-instructions)
-  6. [Questions](#questions)
+## Table of Contents
+1. [Install Instructions](#install-instructions)
+2. [Usage Instructions](#usage-instructions)
+3. [License](#license)
+4. [Contribution Guidelines](#contribution-guidelines)
+5. [Test Instructions](#test-instructions)
+6. [Questions](#questions)
+
+## Install Instructions
+
+${response.installInstructions}
   
-  ## Install Instructions
-  
-  ${response.installInstructions}
-    
-  ## Usage Instructions
-  
-  ${response.usage}
-  
+## Usage Instructions
+
+${response.usage}
+
 ${renderLicenseSection(response.license)} ${renderLicenseBadge(response.license)}
 
-  ## Contribution Guidelines
-  
-  ${response.contributionGuidelines}
-  
-  ## Test Instructions
-  
-  ${response.testInstructions}
-  
-  ## Questions
-  
-  If you have any questions, contact the author:  
-  
-  GitHub [@${response.gitHubUser}](https://github.com/${response.gitHubUser})  
-  Email [${response.email}](mailto:${response.email})
+## Contribution Guidelines
+
+${response.contributionGuidelines}
+
+## Test Instructions
+
+${response.testInstructions}
+
+## Questions
+
+If you have any questions, contact the author:  
+
+GitHub [@${response.gitHubUser}](https://github.com/${response.gitHubUser})  
+Email [${response.email}](mailto:${response.email})
 `;
 }
 
