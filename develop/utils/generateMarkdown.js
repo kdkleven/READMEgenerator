@@ -116,7 +116,7 @@ ${renderLicenseSection(response.license)} ${renderLicenseBadge(response.license)
 
   ## Contribution Guidelines
   
-  ${response.contributions}
+  ${response.contributionGuidelines}
   
   ## Test Instructions
   
